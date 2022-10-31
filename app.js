@@ -1,13 +1,5 @@
-
 const APIKEY = 'XE4xhQrlMTcvFXims9MeGB0zze91kRAC'
 let columnCounter = 1;
-
-function randomTestImg() {
-  let randomNumber = Math.floor(Math.random() * 3) + 1;
-  if (randomNumber == 1) return "https://media.giphy.com/media/VRhsYYBw8AE36/giphy.gif";
-  if (randomNumber == 2) return "https://media.giphy.com/media/xCim8rRaZfHuU/giphy.gif";
-  if (randomNumber == 3) return 'https://media.giphy.com/media/l3HBbltOYjoNq/giphy.gif';
-}
 
 async function createImg(event) {
   event.preventDefault();
@@ -22,9 +14,9 @@ async function createImg(event) {
   });
 
   let randomNumber = Math.floor(Math.random() * 10);
-  let tempString = response.data.data[randomNumber].images.original.url;
+  let giphyURL = response.data.data[randomNumber].images.original.url;
 
-  const newImg = $('<img>').attr('src', tempString);
+  const newImg = $('<img>').attr('src', giphyURL);
   newImg.addClass('rounded-xl mb-2 w-full');
 
   $(`#giphy-col-${columnCounter}`).append(newImg);
